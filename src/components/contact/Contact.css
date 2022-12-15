@@ -1,0 +1,35 @@
+.contact {
+    width: 95%;
+    margin: 30px auto;
+}
+
+.contact h1 {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.otherContact {
+    margin-left: 50px;
+}
+
+.otherContact i {
+    color: white;
+}
+
+.otherContact span {
+    color: white;
+}
+
+.otherContact a span{
+    color: white;
+}
+
+.cbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map {
+    margin-left: 50px;
+}

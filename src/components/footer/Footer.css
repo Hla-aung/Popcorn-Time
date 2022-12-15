@@ -1,0 +1,37 @@
+.footer {
+    width: 100%;
+    background-color: #ffbd59;
+    padding: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.footer h4 {
+    margin-left: 30px;
+    margin-bottom: 20px;
+}
+
+.footer h4 a {
+    color: black;
+}
+
+.footer h4 a:hover {
+    text-decoration: underline;
+}
+
+.footerBox {
+    font-size: 14px;
+    font-weight: lighter;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.footerBox a {
+    text-decoration: none;
+    color: black;
+    margin-left: 50px;
+}
+
+.footerBox a:hover {
+    text-decoration: underline;
+}
