@@ -13,10 +13,13 @@ const Header = () => {
                         <Link to='/' className="link"><img src={logo} alt="Popcorn Time" /></Link>
                     </div>
                     <ul className={mobile ? "navMenu-list" : "flexSB"} onClick={() => setMobile(false)}>
+                    <Link to='/search' className="searchlink">Search</Link>
                         <Link to='/' className="link">Home</Link>
                         <Link to='/movies' className="link">Movies</Link>
+                        <Link to='/tvshows' className="link">TvShows</Link>
                         <Link to='/pricing' className="link">Pricing</Link>
                         <Link to='/contact' className="link">Contact</Link>
+                        
                     </ul>
                     <button className="toggle" onClick={() => setMobile(!mobile)}>
                         {mobile ? <i className="fa fa-times"></i> : <i className="fa fa-bars"></i>}

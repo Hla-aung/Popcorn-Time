@@ -47,3 +47,18 @@ input {
     padding-left: 20px;
     margin: 30px 30px;
 }
+
+@media screen and (max-width: 600px) {
+    input {
+        width: 90%;
+    }
+    .searchInfo > span {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    input {
+        width: 90%;
+    }
+}

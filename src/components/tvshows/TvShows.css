@@ -1,61 +1,114 @@
-.Tvbox{
-    width: 95%;
-    margin: 30px 30px;
+.Tvbox {
+  width: 95%;
+  margin: 30px 30px;
 }
 
 .tvPage {
-    width: 100%;
-    height: 280px;
-    margin: 30px auto;
-    padding: auto;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  width: 100%;
+  height: 280px;
+  margin: 30px auto;
+  padding: auto;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
 }
 
 h2 {
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    margin-top: 30px;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  margin-top: 30px;
 }
 .tvPage div:nth-child(1) {
-    width: 160px;
-    height: 250px;
+  width: 160px;
+  height: 250px;
 }
 
 .tvPage div:nth-child(1):hover {
-    cursor: pointer;
-    transform: scale(1.1, 1.1);
-    box-shadow: #3B3131, 0 20px;
+  cursor: pointer;
+  transform: scale(1.1, 1.1);
+  box-shadow: #3b3131, 0 20px;
 }
 
 .tvPage div:nth-child(1) > img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
 
-.tvPage div:nth-child(2){
-    position: absolute;
-    bottom: 30px;
-    left: 0px;
-    display: inline-block;
-    background-color:  #3B3131;
-    opacity: 80%;
-    border-radius: 0 10px 0 10px;
+.tvPage div:nth-child(2) {
+  position: absolute;
+  bottom: 30px;
+  left: 0px;
+  display: inline-block;
+  background-color: #3b3131;
+  opacity: 80%;
+  border-radius: 0 10px 0 10px;
 }
 
 .tvPage div:nth-child(2) > span {
-    color: white;
-    font-size: 12px;
-    padding-left: 5px;
-    padding-right: 5px;
+  color: white;
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .tvPage div:nth-child(3) {
-    color: white;
-    font-size: 14px;
-    font-weight: 500;
-    margin-top: 15px;
-    padding-right: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 15px;
+  padding-right: 10px;
+}
+
+.tvpagination {
+  margin: 15px auto 30px;
+  background-color: #ffbd59;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+  .tvPage {
+    width: 230px;
+    margin: 50px auto;
+  }
+
+  .tvPage div:nth-child(1) {
+    width: 200px;
+    height: auto;
+  }
+
+  .tvPage div:nth-child(2) {
+    bottom: -20px;
+  }
+  .tvpagination {
+    margin-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .tvPage {
+    width: 165px;
+    height: 230px;
+    margin-left: 10px;
+  }
+  .tvPage div:nth-child(1) {
+    width: 125px;
+    height: 190px;
+  }
+  .tvPage div:nth-child(1) > img {
+    width: 125px;
+    height: 190px;
+  }
+  .tvPage div:nth-child(2){
+    bottom: 40px;
+  }
+  .tvpagination {
+    width: 90%;
+    margin-top: 30px;
+    margin-left: 0px;
+  }
 }

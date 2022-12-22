@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import YouTube from "react-youtube";
 import "../moviedetails/MovieDetails.css"
 import Rating from '@mui/material/Rating';
 import Slider from "react-slick";
+import { profileSettings } from "../settings/Slide";
+import { videoSettings } from "../settings/Slide";
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
 import unknown from "../moviedetails/unknown.png"
@@ -26,63 +27,49 @@ const MovieDetailsCard = ({movieDetails, movieVideo, movieCast}) => {
     const revenue = movieDetails.revenue
     const revenueM = Math.round(revenue / 1000000);
 
-    const settings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2.5,
-        slidesToScroll: 1
-      };
-    
-    const profileSettings = {
-        dots: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 8,
-        slidesToScroll: 1
-    }
     return(
         <>
-        
         <div className="movieDetailsCard" id={movieDetails.id} key={movieDetails.id}>
-            <div>
-                <img src={`${img_1280}/${backdrop}`} alt={movieDetails.title} className="backdrop"></img>
+            <img src={`${img_1280}/${backdrop}`} alt={movieDetails.title} className="backdrop"></img>
+            <div className="detailsbox">
+                
                 <img src={`${img_500}/${poster}`} alt={movieDetails.title} className="poster"></img>
-            </div>
-            
-            <div>
-                <div className="genres">{
-                   movieDetails.genres?.length > 0 ? (movieDetails.genres.map((item) => (
+                <div className="information">
+                    <div className="genres">{
+                        movieDetails.genres?.length > 0 ? (movieDetails.genres.map((item) => (
                         <span id={item.id} key={item.id}>{item.name} | </span>
-                    ))) : ''
-                }</div>
+                        ))) : ''
+                    }</div>
                 
-                <h1>{movieDetails.title}</h1>
+                    <h1>{movieDetails.title}</h1>
                 
-                <div className="rating">
-                    <span>Rating: {voting} </span>
-                    <Rating name="read-only" className="star" size="small" value={rating} precision={0.1} readOnly />
-                </div>
+                    <div className="rating">
+                        <span>Rating: {voting} </span>
+                        <Rating name="read-only" className="star" size="small" value={rating} precision={0.1} readOnly />
+                    </div>
                 
-                <div className="release">
-                    <span>Released Date: {movieDetails.release_date} ||</span>
-                    <span> Runtime: {movieDetails.runtime} minutes</span>
-                </div>
+                    <div className="release">
+                        <span>Released Date: {movieDetails.release_date} ||</span>
+                        <span> Runtime: {movieDetails.runtime} minutes</span>
+                    </div>
                
-                <div className="overview">
-                    <h3>Overview</h3>
-                    <span>{movieDetails.overview}</span>
-                </div>
+                    <div className="overview">
+                        <h3>Overview</h3>
+                        <span>{movieDetails.overview}</span>
+                    </div>
 
-                <div className="company">
-                   { movieDetails && movieDetails.production_companies?.length > 0 ? (movieDetails.production_companies.map((item) => (
+                    <div className="company">
+                        { movieDetails && movieDetails.production_companies?.length > 0 ? (movieDetails.production_companies.map((item) => (
             
                         item.logo_path === null ? '' : 
                         <img src={`${img}/${item.logo_path}`} key={item.id}></img>
                     
-                    ))) : ""}
+                        ))) : ""}
+                    </div>
                 </div>
             </div>
+            
+            
         </div>
 
         <div className="others">
@@ -99,7 +86,7 @@ const MovieDetailsCard = ({movieDetails, movieVideo, movieCast}) => {
         <div className="cast">
             <h3>Casts</h3>
             <Slider {...profileSettings}>
-                {movieCast?.length > 0 ? (movieCast.map((item) => (
+                {movieCast?.length > 0 ? (movieCast.slice(0,10).map((item) => (
                     <div className="profile" key={item.id}>
                         {item.profile_path === null ? <img src={unknown} width={100} height={150} className="unknown"/> : <img src={`${img}/${item.profile_path}`} alt="profile" width={100} height={150} className="pp" />}
                         <p>{item.name}</p>
@@ -111,14 +98,17 @@ const MovieDetailsCard = ({movieDetails, movieVideo, movieCast}) => {
 
         <div className="video">
                 <h3>Videos</h3>
-                <Slider {...settings}>
-                    {movieVideo?.length > 0 ? (movieVideo.map((item) => (
+                <Slider {...videoSettings}>
+                    {movieVideo?.length > 0 ? (movieVideo.slice(0,5).map((item) => (
                         <div key={item.id}>
-                            <YouTube
-                                videoId={`${item.key}`}
-                                opts={{width: "480", height: "270"}}
-                                style={{border: "solid 3px grey"}}
-                            ></YouTube>
+                            <iframe
+                               src={`https://www.youtube.com/embed/${item.key}`}
+                               title="YouTube video player" 
+                               className="yt"
+                               frameBorder="1"
+                               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture, allow-presentation"
+                               allowFullScreen
+                            ></iframe>
                             <span>{item.type} || {item.name}</span>
                         </div> 
                     ))) : ''}

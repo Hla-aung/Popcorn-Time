@@ -10,6 +10,7 @@
 
 .otherContact {
     margin-left: 50px;
+    margin-top: 30px;
 }
 
 .otherContact i {
@@ -32,4 +33,20 @@
 
 .map {
     margin-left: 50px;
+    width:450px; 
+    height:250px;
+}
+
+@media screen and (max-width: 600px) {
+    .contact h1 {
+        font-size: 30px;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .map {
+        margin: 10px 15px;
+        width: 320px;
+        height: 200px;
+    }
 }

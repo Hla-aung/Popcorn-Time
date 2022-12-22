@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../recommended/RecommendedMovie.css"
 
 const img_300 = "https://image.tmdb.org/t/p/w300"
@@ -8,10 +8,9 @@ const RecommendedMovieCard = ({recommendedMovie : {id, poster_path, title, vote_
     const num = vote_average
     const voting = Math.round(num * 10) / 10;
 
-    const navigate = useNavigate()
     return (
-        <>
-            <div className="recommendedmovie" id={id} onClick={() => navigate(`${id}`)}>
+            <div className="recommendedmovie" id={id}>
+                <Link to={`${id}`}>
                 <div>
                     <img src={`${img_300}/${poster}`}  alt={title} />
                 </div>
@@ -23,8 +22,8 @@ const RecommendedMovieCard = ({recommendedMovie : {id, poster_path, title, vote_
                 <div>
                     <span>{title}</span>
                 </div>
+                </Link>
             </div>
-        </>
     )
 }
 

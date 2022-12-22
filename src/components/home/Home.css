@@ -2,19 +2,3 @@
   width: 95%;
   margin: 20px auto;
 }
-
-.topimg > img {
-  width: 100%;
-  filter: grayscale(80%);
-  margin-top: 10px;
-  position: relative;
-}
-.topimg > h1 {
-  color: #f10000;
-  position: absolute;
-  top: 220px;
-  left: 100px;
-  z-index: 1;
-  opacity: 80%;
-  font-size: 3.8rem;
-}

@@ -1,11 +1,10 @@
 import React from "react";
-import poster from "../home/Marvel.jpg"
+import poster from "../home/Marvel Poster.jpg"
 
 const Topimg = () => {
     return (
     <div className="topimg">
-        <h1>All Movies in One Place. Explorer...</h1>
-        <img src={poster} alt="marvel" width="1080px"/>
+        <img src={poster} alt="marvel" width="100%"/>
     </div>
     )
 }

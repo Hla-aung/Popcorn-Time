@@ -1,55 +1,106 @@
-import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
-import MovieDetailsCard from "./MovieDetailsCard"
-import "../moviedetails/MovieDetails.css"
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-
-const API_URL = 'https://api.themoviedb.org/3'
-const Api_Key = 'f747e161e06350986b9539adff7f92b5'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { API_URL, Api_Key } from "../api/Api";
+import MovieDetailsCard from "./MovieDetailsCard";
+import TvDetailsCard from "./TvDetailsCard";
+import "../moviedetails/MovieDetails.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const MovieDetails = () => {
-    const [movieDetails, setMovieDetails] = useState({})
-    const [movieVideo, setMovieVideo] = useState([])
-    const [movieCast, setMovieCast] = useState([])
+  const [movieDetails, setMovieDetails] = useState([]);
+  const [movieVideo, setMovieVideo] = useState([]);
+  const [movieCast, setMovieCast] = useState([]);
 
-    const { id } = useParams();
+  const [tvDetails, setTvDetails] = useState([]);
+  const [tvVideo, setTvVideo] = useState([]);
+  const [tvCast, setTvCast] = useState([]);
 
-    const getMovieDetails = async () => {
-        const response = await fetch(`${API_URL}/movie/${id}?api_key=${Api_Key}`);
-        const moviedata = await response.json();
+  const { id } = useParams();
 
-        setMovieDetails(moviedata) 
-    }
+  const getMovieDetails = async () => {
+    const { data } = await API_URL.get(`/movie/${id}?api_key=${Api_Key}`);
+    setMovieDetails(data);
+    console.log(data);
+    setTvDetails(false);
+  };
+  const getMovieVideo = async () => {
+    const { data } = await API_URL.get(
+      `/movie/${id}/videos?api_key=${Api_Key}`
+    );
+    setMovieVideo(data.results);
+    console.log(data.results);
+  };
+  const getMovieCast = async () => {
+    const { data } = await API_URL.get(
+      `/movie/${id}/credits?api_key=${Api_Key}`
+    );
+    setMovieCast(data.cast);
+    console.log(data.cast);
+  };
 
-    const getMovieVideo = async () => {
-        const response = await fetch(`${API_URL}/movie/${id}/videos?api_key=${Api_Key}`);
-        const data = await response.json();
+  const getTvDetails = async () => {
+    const { data } = await API_URL.get(`/tv/${id}?api_key=${Api_Key}`);
+    setTvDetails(data);
+    console.log(data);
+    setMovieDetails(false);
+  };
+  const getTvVideo = async () => {
+    const { data } = await API_URL.get(`/tv/${id}/videos?api_key=${Api_Key}`);
+    setTvVideo(data.results);
+    console.log(data.results);
+  };
+  const getTvCast = async () => {
+    const { data } = await API_URL.get(`/tv/${id}/credits?api_key=${Api_Key}`);
+    setTvCast(data.cast);
+    console.log(data.cast);
+  };
 
-        setMovieVideo(data.results)
-    }
+  useEffect(() => {
+    getMovieDetails();
+    getMovieVideo();
+    getMovieCast();
 
-    const getMovieCast = async () => {
-        const response = await fetch(`${API_URL}/movie/${id}/credits?api_key=${Api_Key}`);
-        const data = await response.json();
+    getTvDetails();
+    getTvVideo();
+    getTvCast();
 
-        setMovieCast(data.cast)
-    }
+    return () => {
+      getTvDetails([]);
+      getMovieDetails([]);
 
-   useEffect(() => {
-        getMovieDetails({})  
-        getMovieVideo([])  
-        getMovieCast([])  
+      getMovieVideo([]);
+      getMovieCast([]);
+
+      getTvVideo([]);
+      getTvCast([]);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+  }, []);
 
-    return(
-        <>
-        <div className="movieDetails">
-            movieDetails && <MovieDetailsCard movieDetails={movieDetails} movieCast={movieCast} movieVideo={movieVideo} key={movieDetails.id}/>
-        </div>
-        </>
-    )
-}
+  return (
+    <>
+      <div className="movieDetails">
+        {movieDetails && (
+          <MovieDetailsCard
+            movieDetails={movieDetails}
+            movieCast={movieCast}
+            movieVideo={movieVideo}
+            key={movieDetails.id}
+          />
+        )}
 
-export default MovieDetails
+        {tvDetails && (
+          <TvDetailsCard
+            tvDetails={tvDetails}
+            tvCast={tvCast}
+            tvVideo={tvVideo}
+            key={tvDetails.id}
+          />
+        )}
+      </div>
+    </>
+  );
+};
+
+export default MovieDetails;

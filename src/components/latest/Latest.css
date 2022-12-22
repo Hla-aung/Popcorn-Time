@@ -75,3 +75,60 @@
 .latestmovie div:nth-child(2) button > i {
   margin-right: 5px;
 }
+
+@media screen and (max-width: 1200px) {
+  .latestmovie {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .latestmovie {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .latestmovie {
+    width: 90%;
+    height: auto;
+  }
+
+  .latestmovie div:nth-child(2) {
+    width: 400px;
+    bottom: 20px;
+    left: 10px;
+    right: 10px;
+    margin-right: 10px;
+  }
+
+  .latestmovie div:nth-child(2) h1 {
+    font-size: 14px;
+    margin: 10px 5px;
+  }
+  .latestmovie div:nth-child(2) > span {
+    font-size: 8px;
+    font-weight: 200;
+    padding: 0;
+    margin: 5px;
+    background-color: #3B3131;
+    opacity: 80%;
+  }
+  .latestmovie div:nth-child(2) p{
+    display: none;
+  }
+  .latestmovie div:nth-child(2) button {
+    margin: 10px 5px;
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 5px;
+
+  }
+
+  .latestmovie div:nth-child(2) button > span {
+    font-size: 10px;
+  }
+}
+

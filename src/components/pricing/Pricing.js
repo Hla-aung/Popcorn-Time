@@ -2,6 +2,7 @@ import React from "react";
 import Footer from "../footer/Footer"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { Grid } from "@mui/material";
 import "./Pricing.css"
 
 const pricing = [
@@ -45,9 +46,11 @@ const Pricing = () => {
     <div className="pricing">
         <h1>Plans and Pricing</h1>
         <p>Popcorn Time offers a variety of plans to meet your entertainment needs. You can easily change your plan or cancel at any time.</p>
-        <div className="cardbox">{
+        <Grid container spacing={1}>
+        {
             pricing.map((item) => (
-                <Card sx={{ maxWidth: 350, borderRadius: "15px", margin: "30px", padding: "20px", backgroundColor: "#ffbd59" }} id={item.id} key={item.id} className="card">
+                <Grid item lg={4} sm={12} >
+                <Card sx={{backgroundColor: '#ffbd59', borderRadius: '20px'}} id={item.id} key={item.id} className="card">
                     <CardContent>
                         <h2>{item.plan}</h2>
                         <ul>
@@ -61,8 +64,10 @@ const Pricing = () => {
                         </CardContent>
                         <button className="button" size="medium">Subscribe</button>
                     </Card>
+                    </Grid>
             ))
-        }</div>
+        }
+        </Grid>
         <div className="note">
             <i className="fa-solid fa-quote-left"></i>
                 <span><b> Note: </b>Basic plan requires to watch ads and skipping ads is not allowed.<br>
